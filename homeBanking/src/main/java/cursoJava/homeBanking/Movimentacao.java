@@ -44,6 +44,12 @@ public class Movimentacao {
 	public String toString() {
 		return "Tipo Movimentacao :" + tipoMovimentacao.toString() + " Valor :" + String.valueOf(valor);
 	}
+	
+	public String getInfo() {
+		return "Banco=" + this.getConta().getCliente().getBanco().getCodigo() + " Cliente=" + this.getConta().getCliente().toString() 
+				+ " Conta=" + this.getConta().toString() + " Movimentação=" + this.getTipoMovimentacao().toString() + " " + this.getValor();
+	}
+	
 	public long getId() {
 		return id;
 	}

@@ -2,11 +2,11 @@
 # use the command line to execute commands
 FROM maven:3.6.2-jdk-11 as maven
 
-COPY ./homeBanking/homeBanking/pom.xml ./pom.xml
+COPY ./pom.xml ./pom.xml
 
 RUN mvn dependency:go-offline -B
 
-COPY ./homeBanking/homeBanking/src ./src
+COPY ./src ./src
 
 RUN mvn package
 

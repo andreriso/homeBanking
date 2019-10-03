@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,7 +23,9 @@ public class Cliente {
 	private String telefone;
 	@OneToMany(mappedBy = "cliente")
 	private List<Conta> contas;
-
+	@ManyToOne
+	private Banco banco;
+	
 	public long getId() {
 		return this.id;
 	}
@@ -71,12 +74,25 @@ public class Cliente {
 		this.contas = contas;
 	}
 	
+	public Banco getBanco() {
+		return banco;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
+	
+	public String toString() {
+		return this.nome + " " + this.sobrenome;
+	}
+	
 	public Cliente(Builder builder) {
 		this.nome = builder.nome;
 		this.sobrenome = builder.sobrenome;
 		this.endereco = builder.endereco;
 		this.telefone = builder.telefone;
 		this.contas = builder.contas;
+		this.banco = builder.banco;
 		for(Conta c : contas) {
 			c.setCliente(this);
 		}

@@ -102,4 +102,8 @@ public abstract class Conta implements VisitableElement {
 	public void accept(ContaVisitor visitor) {
 		visitor.visit(this);
 	}	
+	
+	public String toString() {
+		return  String.valueOf(id);
+	}
 }
